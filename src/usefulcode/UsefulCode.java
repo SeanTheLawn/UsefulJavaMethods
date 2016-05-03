@@ -20,10 +20,16 @@ public class UsefulCode {
      */
     public static void main(String[] args) {
         
+        String write = "okay testing\nline 2" + String.format("%n") + "line 3 lol";
+        
         try {
-            System.out.print(TextFileManipulation.readLineTextFile("S:\\Users\\SeanTheLawn\\Desktop\\test.txt", 2));
-        } catch (FileNotFoundException ex) {
+            TextFileManipulation.insertTextLineInFile("S:\\Users\\SeanTheLawn\\Desktop\\Programming Projects\\test files\\test.txt",
+                    "S:\\Users\\SeanTheLawn\\Desktop\\Programming Projects\\test files\\test4.txt",
+                    "---", 0);
+            //TextFileManipulation.writeTextFile("S:\\Users\\SeanTheLawn\\Desktop\\test3.txt", "testing", true);
+        } catch (Exception ex) {
             Logger.getLogger(UsefulCode.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Exception");
         }
         
     }
