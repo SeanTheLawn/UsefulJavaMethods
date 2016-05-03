@@ -12,8 +12,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.IIOException;
 
 /**
@@ -169,6 +167,23 @@ public class TextFileManipulation {
     }
     
     /**
+     *Adds new text to the end of a text file, starting on a new line.
+     * 
+     * @param filePath
+     *  the path of the file to be appended and overwritten, including the filename
+     * @param newText
+     *  the String of text to be added to the original file
+     * @throws FileNotFoundException
+     *  if the original file can't be found
+     * @throws IOException
+     *  if an error occurs initializing the BufferedWriter while writing the file
+     */
+    public static void appendTextFile(String filePath, String newText)
+            throws FileNotFoundException, IOException{
+        appendTextFile(filePath, filePath, newText);
+    }
+    
+    /**
      *Adds new text to the end of a text file, starting on the final line of the
      * original file.
      * 
@@ -195,6 +210,24 @@ public class TextFileManipulation {
         String text = readTextFile(initFilePath) + newText;
         //Write the new text file with overwrite permissions
         writeTextFile(newFilePath, text, true);
+    }
+    
+    /**
+     *Adds new text to the end of a text file, starting on the final line of the
+     * original file.
+     * 
+     * @param filePath
+     *  the path of the file to be appended and overwritten, including the filename
+     * @param newText
+     *  the String of text to be added to the original file
+     * @throws FileNotFoundException
+     *  if the original file can't be found
+     * @throws IOException
+     *  if an error occurs initializing the BufferedWriter while writing the file
+     */
+    public static void appendTextFileSameLine(String filePath, String newText)
+            throws FileNotFoundException, IOException{
+        appendTextFileSameLine(filePath, filePath, newText);
     }
     
     /**
@@ -284,6 +317,29 @@ public class TextFileManipulation {
     }
     
     /**
+     *Inserts new text into the middle of a text file at the specified line and
+     * character index.
+     * 
+     * @param filePath
+     *  the path of the text file to be edited, including the filename
+     * @param newText
+     *  the String of text to be added
+     * @param lineNumber
+     *  the line number where the new text will be inserted (starts at zero)
+     * @param charIndex
+     *  the character index where the text will be inserted on the specified line
+     * @throws FileNotFoundException
+     *  if the original file can't be found
+     * @throws IOException
+     *  if an error occurs initializing the BufferedWriter while writing the file
+     */
+    public static void insertTextInFile(String filePath, String newText,
+            int lineNumber, int charIndex)
+            throws FileNotFoundException, IOException{
+        insertTextInFile(filePath, filePath, newText, lineNumber, charIndex);
+    }
+    
+    /**
      *Inserts a new line of text into the middle of a text file at the specified
      * line. Original text at the specified line is pushed down.
      * 
@@ -306,5 +362,25 @@ public class TextFileManipulation {
         insertTextInFile(initFilePath, newFilePath,
                 (newText + String.format("%n")),
                 lineNumber, 0);
+    }
+    
+    /**
+     *Inserts a new line of text into the middle of a text file at the specified
+     * line. Original text at the specified line is pushed down.
+     * 
+     * @param filePath
+     *  the path of the text file to be edited, including the filename
+     * @param newText
+     *  the String of text to be added
+     * @param lineNumber
+     *  the line number where the new text will be inserted (starts at zero)
+     * @throws FileNotFoundException
+     *  if the original file can't be found
+     * @throws IOException
+     *  if an error occurs initializing the BufferedWriter while writing the file
+     */
+    public static void insertTextLineInFile(String filePath, String newText,
+            int lineNumber) throws FileNotFoundException, IOException{
+        insertTextLineInFile(filePath, filePath, newText, lineNumber);
     }
 }
