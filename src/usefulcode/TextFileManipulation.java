@@ -15,7 +15,8 @@ import java.util.Scanner;
 import javax.imageio.IIOException;
 
 /**
- *
+ *Various reusable methods for reading, writing, and manipulating text-based files
+ * 
  * @author SeanTheLawn
  */
 public class TextFileManipulation {
