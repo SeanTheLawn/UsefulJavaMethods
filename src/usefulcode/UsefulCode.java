@@ -10,6 +10,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+
+
+
 
 /**
  *
@@ -24,17 +28,18 @@ public class UsefulCode {
         
         try {
             
-            System.out.println(OperatingSystemFunctions.getActiveProcessNamesString()); 
+            String sheet[][][] = SpreadsheetManipulation.readExcel07WorkbookAsArray("S:\\Users\\SeanTheLawn\\Desktop\\Programming Projects\\test files\\Book1.xlsx");
+            System.out.println(sheet[0][3][1]);
             
         } catch (SecurityException ex) {
             Logger.getLogger(UsefulCode.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println();
             System.out.println("Security Exception");
             System.out.println();
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(UsefulCode.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println();
-            System.out.println("IOException");
+            System.out.println("Exception");
             System.out.println();
         }
         
